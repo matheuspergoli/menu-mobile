@@ -1,0 +1,112 @@
+*, *::after, *::before {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    padding: 1rem;
+    background-color: #e7e7e7;
+}
+
+#menu {
+    display: flex;
+    gap: 0.5rem;
+}
+
+#logo {
+    color: black;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+#btn-mobile {
+    display: none;
+}
+
+.link {
+    display: block;
+    color: black;
+    padding: 0.5rem;
+}
+
+.link:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+@media (max-width: 600px) {
+    #menu {
+        display: block;
+        position: absolute;
+        width: 100%;
+        top: 70px;
+        right: 0px;
+        height: 0px;
+        z-index: 1000;
+        transition: 600ms;
+        visibility: hidden;
+        overflow-y: hidden;
+        background-color: #e7e7e7;
+    }
+    
+    #nav.active #menu {
+        overflow-y: auto;
+        visibility: visible;
+        height: calc(100vh - 70px);
+    }
+
+    #btn-mobile {
+        display: flex;
+        gap: 0.5rem;
+        border: none;
+        font-size: 1rem;
+        cursor: pointer;
+        background: none;
+        padding: 0.5rem 1rem;
+    }
+
+    #hamburger {
+        width: 20px;
+        border-top: 2px solid;
+    }
+
+    #hamburger::after, #hamburger::before {
+        position: relative;
+        content: '';
+        display: block;
+        width: 20px;
+        height: 2px;
+        margin-top: 5px;
+        transition: 300ms;
+        background-color: currentColor;
+    }
+
+    #nav.active #hamburger {
+        border-top-color: transparent;
+    }
+
+    #nav.active #hamburger::before {
+        transform: rotate(135deg);
+    }
+
+    #nav.active #hamburger::after {
+        transform: rotate(-135deg);
+        top: -7px;
+    }
+
+    .link {
+        padding: 1rem 0px;
+        margin: 0px 1rem;
+        border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+    }
+}
